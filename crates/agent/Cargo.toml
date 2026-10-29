@@ -1,0 +1,13 @@
+[package]
+name = "bizkernel-agent"
+description = "Agent tool surface: typed operations exposed to an LLM, routed through the kernel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+bizkernel-core.workspace = true
+bizkernel-store.workspace = true
+serde.workspace = true
+serde_json.workspace = true
