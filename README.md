@@ -10,6 +10,29 @@ Business user ──intent──▶ Agent ──operations──▶ Kernel (Rust
 
 **Agent proposes, the kernel disposes.** The agent has no path to storage except through the kernel.
 
+## Why BizKernel beats SAP
+
+SAP's real cost isn't its database. It's the screens, the T-codes, the consultants, and the developer queue between a business need and a working system. BizKernel removes all of that.
+
+| | SAP and legacy ERPs | BizKernel |
+| --- | --- | --- |
+| **Interface** | Dense GUI screens, hundreds of T-codes, weeks of training | Conversation-first: type or say what you need. Clean, minimal screens shaped around the task in front of you. No training. |
+| **Custom logic** | Ticket → ABAPer → test → transport. Weeks. | Describe it in plain language. Live in seconds. |
+| **Who's in control** | IT and consultants gatekeep every change | The business owns its own system |
+| **Correctness** | Enforced by convention and human review | Enforced by Rust types and kernel rules. Invalid data cannot be written. |
+| **Audit** | Mutable logs; "trust us" | Every change hash-chained and tamper-evident; verifiable by anyone |
+| **Speed to value** | Months-long implementations | Running the same day |
+| **Fit** | Built for the largest enterprises, priced for them | Lean enough for a 50-person business, solid enough to scale |
+
+### The interface is the product
+
+Most ERPs bolt a chat window onto old screens. BizKernel starts from the other end: the conversation *is* the interface, and screens appear only when they help.
+
+- **Ask, don't navigate.** "Show open POs from Vendor 100 over ₹5L" returns the answer, not a menu path.
+- **Every action explains itself.** When the kernel refuses something, you get the reason in plain words and what would fix it.
+- **One clean surface for every role.** Buyers, store managers and finance teams use the same simple interface, each seeing only what their work needs.
+- **Fast by default.** A Rust core with no middleware stack between you and your data.
+
 ## Workspace
 
 | Crate | Role |
@@ -39,8 +62,9 @@ cargo test
 1. Rust transactional core — typed domain, validated operations, hash-chained store ← **in progress**
 2. Agent layer — LLM loop on top of the tool surface
 3. Business-defined artifacts — custom reports, then fields, then workflows
-4. Crypto anchor — publish the chain head for external verification
-5. Custom storage engine behind the `Storage` trait
+4. Conversation-first UI — chat plus task-shaped screens for every role
+5. Crypto anchor — publish the chain head for external verification
+6. Custom storage engine behind the `Storage` trait
 
 ## License
 
